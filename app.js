@@ -7,7 +7,7 @@ var  methodOverride = require('method-override'),
                User = require('./models/User'),
               Image = require('./models/Image'),
              Member = require('./models/Member'),
-              Event = require('./models/Event'),
+            Station = require('./models/Station'),
            passport = require('passport'),
       LocalStrategy = require('passport-local'),
         
@@ -62,7 +62,7 @@ app.use(function(req,res,next){
 
    //==================================================APP CONFIG=========================================================//
    mongoose.Promise = global.Promise;
-   mongoose.connect('mongodb://localhost/CSI', { useMongoClient: true, });
+   mongoose.connect('mongodb://localhost/PPTS', { useMongoClient: true, });
    app.set('view engine','ejs');
    app.use(express.static(__dirname +'/public'));
    app.use(bodyParser.urlencoded({extended:true}));

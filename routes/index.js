@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var User = require('../models/User');
 var Image = require('../models/Image');
-var Event = require('../models/Event');
+var Station = require('../models/Station');
 var Member = require('../models/Member');
 
 
@@ -25,7 +25,9 @@ router.get('/',function(req,res){
 
 
 
-
+router.get('/homepage',function(req,res){
+res.render('homepage')
+});
 
 
 
@@ -50,12 +52,7 @@ router.get('/register',function(req,res){
 //Sign Up logic
 router.post('/register',function(req,res){
 var newUser = new User ({
-                        username: req.body.username,
-                        StudentName : req.body.StudentName,
-                        Gender : req.body.Gender,
-                        Class : req.body.Class,
-                        RollNumber : req.body.RollNumber,
-                        MobileNumber : req.body.MobileNumber
+                        username: req.body.username
                         });
   
 
@@ -84,7 +81,7 @@ res.redirect('/');
 //login logic
 // app.post('/login',middleware,callback)
 router.post('/login',passport.authenticate("local",
-{successRedirect: "/",
+{successRedirect: "/homepage",
 failureRedirect: "/"
 }),function(req,res){
 
